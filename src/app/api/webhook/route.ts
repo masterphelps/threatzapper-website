@@ -54,7 +54,7 @@ async function createShipStationOrder(session: Stripe.Checkout.Session) {
         sku: "THREATZAPPER-001",
         name: "ThreatZapper",
         quantity: quantity,
-        unitPrice: 149.0,
+        unitPrice: 199.0,
       },
     ],
     amountPaid: (session.amount_total || 0) / 100,

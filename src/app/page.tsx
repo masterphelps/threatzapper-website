@@ -77,14 +77,14 @@ export default function Home() {
       </section>
 
       {/* Product Video */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-4 px-6 bg-white">
         <div className="flex justify-center overflow-hidden">
           <video
             autoPlay
             muted
             loop
             playsInline
-            style={{ height: '300px', transform: 'scale(1.02)' }}
+            style={{ height: '300px', transform: 'scale(1.28)' }}
             src="/mt3000_rendering.mp4"
           />
         </div>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 400 120">
+  <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #2563eb;
+        stroke-opacity: .4;
+        stroke-width: 1.5px;
+      }
+
+      .st0, .st1 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .st2 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st3, .st4, .st5 {
+        isolation: isolate;
+      }
+
+      .st4 {
+        fill: #2563eb;
+      }
+
+      .st4, .st5 {
+        font-family: Helvetica-Bold, Helvetica;
+        font-size: 38px;
+        font-weight: 700;
+      }
+
+      .st5 {
+        fill: #1e293b;
+      }
+
+      .st1 {
+        stroke: url(#linear-gradient);
+        stroke-width: 4px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="-390.94" y1="358.04" x2="-389.96" y2="357.05" gradientTransform="translate(19601 28659) scale(50 -80)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="-374.07" y1="354.98" x2="-373.05" y2="353.96" gradientTransform="translate(6053 14239) scale(16 -40)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <path class="st1" d="M50.01,25v41.13c0,13.42,8.33,23.04,24.99,28.88,16.66-5.83,24.99-15.46,24.99-28.88V25c-16.66,4.08-33.32,4.08-49.99,0Z"/>
+  <path class="st0" d="M58.01,33.75v29.75c0,10.5,5.67,18.08,17,22.75,11.33-4.67,17-12.25,17-22.75v-29.75c-11.33,2.92-22.66,2.92-33.99,0Z"/>
+  <path class="st2" d="M80.01,42.5l-12,17.5h8l-6,17.5,14-22.75h-8l6-12.25h-2Z"/>
+  <g class="st3">
+    <text class="st5" transform="translate(120 68)"><tspan x="0" y="0">Threat</tspan></text>
+    <text class="st4" transform="translate(236.13 68)"><tspan x="0" y="0">Zapper</tspan></text>
+  </g>
+</svg>

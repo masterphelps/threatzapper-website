@@ -25,7 +25,7 @@ export async function POST(request: Request) {
             product_data: {
               name: "ThreatZapper",
               description: "Network security appliance - Blocks traffic from hostile nations",
-              images: ["https://threatzapper.com/product-image.jpg"],
+              images: ["https://threatzapper.com/product.png"],
             },
             unit_amount: 19900, // $199.00
           },

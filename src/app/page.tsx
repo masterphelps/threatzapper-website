@@ -76,6 +76,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Product Video */}
+      <section className="py-12 px-6 bg-gray-900">
+        <div className="max-w-4xl mx-auto">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full rounded-2xl shadow-2xl"
+          >
+            <source src="/mt3000_rendering.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+
       {/* Threat Stats Section */}
       <section className="py-20 bg-gray-50 px-6">
         <div className="max-w-6xl mx-auto">

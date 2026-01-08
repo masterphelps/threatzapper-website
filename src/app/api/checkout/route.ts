@@ -27,7 +27,7 @@ export async function POST(request: Request) {
               description: "Network security appliance - Blocks traffic from hostile nations",
               images: ["https://threatzapper.com/product-image.jpg"],
             },
-            unit_amount: 14900, // $149.00
+            unit_amount: 19900, // $199.00
           },
           quantity,
         },

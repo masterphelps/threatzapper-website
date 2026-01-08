@@ -20,7 +20,7 @@ export default function Home() {
             <a href="#faq" className="hover:text-gray-900 transition">FAQ</a>
           </div>
           <Link href="/checkout">
-            <Button size="sm">Buy Now - $149</Button>
+            <Button size="sm">Buy Now - $199</Button>
           </Link>
         </div>
       </nav>
@@ -50,7 +50,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link href="/checkout">
               <Button size="xl" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700">
-                Order Now - $149
+                Order Now - $199
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -651,7 +651,7 @@ export default function Home() {
           </p>
           <Link href="/checkout">
             <Button size="xl" className="bg-white text-blue-600 hover:bg-gray-100">
-              Order ThreatZapper - $149
+              Order ThreatZapper - $199
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>

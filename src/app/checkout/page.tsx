@@ -81,7 +81,7 @@ export default function CheckoutPage() {
               <div className="border-t border-gray-100 pt-6">
                 <div className="flex justify-between mb-2">
                   <span className="text-gray-600">Price</span>
-                  <span className="font-medium">$149.00</span>
+                  <span className="font-medium">$199.00</span>
                 </div>
                 <div className="flex justify-between mb-2">
                   <span className="text-gray-600">Shipping</span>
@@ -89,7 +89,7 @@ export default function CheckoutPage() {
                 </div>
                 <div className="flex justify-between text-lg font-bold mt-4 pt-4 border-t border-gray-100">
                   <span>Total</span>
-                  <span>${(149 * quantity).toFixed(2)}</span>
+                  <span>${(199 * quantity).toFixed(2)}</span>
                 </div>
               </div>
             </div>

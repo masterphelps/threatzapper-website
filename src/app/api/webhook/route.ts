@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server"
 import Stripe from "stripe"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-12-15.clover",
-})
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error("STRIPE_SECRET_KEY is not set")
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2025-12-15.clover",
+  })
+}
 
 // ShipStation API configuration
 const SHIPSTATION_API_KEY = process.env.SHIPSTATION_API_KEY
@@ -15,6 +18,7 @@ async function createShipStationOrder(session: Stripe.Checkout.Session) {
   // @ts-expect-error - shipping_details exists on completed sessions
   const shipping = session.shipping_details || session.collected_information?.shipping_details
   const customerEmail = session.customer_details?.email
+  const stripe = getStripe()
   const lineItems = await stripe.checkout.sessions.listLineItems(session.id)
 
   // Calculate quantity from line items
@@ -83,8 +87,15 @@ async function createShipStationOrder(session: Stripe.Checkout.Session) {
 export async function POST(request: Request) {
   const body = await request.text()
   const signature = request.headers.get("stripe-signature")!
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+
+  if (!webhookSecret) {
+    console.error("STRIPE_WEBHOOK_SECRET is not set")
+    return NextResponse.json({ error: "Webhook not configured" }, { status: 500 })
+  }
 
   let event: Stripe.Event
+  const stripe = getStripe()
 
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret)

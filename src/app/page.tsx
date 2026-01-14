@@ -1,14 +1,24 @@
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Shield, Zap, Globe, CheckCircle, XCircle, ArrowRight, Lock, Wifi, Router } from "lucide-react"
+import { Shield, Zap, Globe, CheckCircle, XCircle, ArrowRight, Lock, Wifi, Router, AlertTriangle, Star } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { LiveThreatCounter } from "@/components/live-threat-counter"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* Urgency Banner */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-amber-500 text-amber-950 py-2 px-4 text-center text-sm font-medium">
+        <span className="inline-flex items-center gap-2">
+          <AlertTriangle className="h-4 w-4" />
+          Due to high demand, stock is limited. Please allow 3-5 days for shipping.
+          <span className="hidden sm:inline">We're doing our best to keep up!</span>
+        </span>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+      <nav className="fixed top-10 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo1.png" alt="ThreatZapper" width={320} height={80} className="h-12 w-auto py-2" />
@@ -26,95 +36,114 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-40 pb-20 px-6 bg-gradient-to-b from-red-50 to-white">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-red-50 text-red-700 px-4 py-2 rounded-full text-sm font-medium mb-8">
+          {/* Live Threat Badge */}
+          <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-8 shadow-lg">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
             </span>
-            82% of cyberattacks come from 7 hostile nations
+            LIVE: Your network is being scanned right now
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6">
-            Protect Your Home
+            Your Home Network Is
             <br />
-            <span className="text-blue-600">From Foreign Threats</span>
+            <span className="text-red-600">Being Scanned Right Now</span>
           </h1>
 
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-            ThreatZapper blocks all internet traffic from Russia, China, North Korea, Iran, and other hostile nations.
-            Plug it in. Forget about it. Stay protected.
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-6">
+            Every 39 seconds, hackers from Russia and China probe American homes looking for open doors.
+            <span className="font-semibold"> Don't believe it? Keep reading.</span>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+            ThreatZapper blocks 100% of traffic from hostile nations. Plug it in. Done.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Link href="/checkout">
-              <Button size="xl" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700">
-                Order Now - $199
+              <Button size="xl" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 shadow-lg">
+                Protect My Network Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <Button size="xl" variant="outline" className="w-full sm:w-auto" asChild>
-              <a href="#how-it-works">See How It Works</a>
+              <a href="#threat-stats">See The Proof</a>
             </Button>
           </div>
 
-          <div className="flex items-center justify-center gap-8 text-sm text-gray-500">
+          {/* Guarantee Badge */}
+          <div className="bg-green-50 border border-green-200 rounded-xl px-6 py-4 inline-block mb-8">
+            <div className="flex items-center gap-3">
+              <Shield className="h-8 w-8 text-green-600" />
+              <div className="text-left">
+                <div className="font-semibold text-green-900">30-Day Risk-Free Trial</div>
+                <div className="text-sm text-green-700">Don't love it? Full refund, no questions asked.</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
             <div className="flex items-center gap-2">
               <CheckCircle className="h-4 w-4 text-green-500" />
               Free Shipping
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="h-4 w-4 text-green-500" />
-              30-Day Guarantee
+              No Subscription Required
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="h-4 w-4 text-green-500" />
-              Made in USA
+              Works Out of the Box
             </div>
           </div>
         </div>
       </section>
 
-      {/* Product Video */}
-      <section className="py-4 px-6 bg-white">
-        <div className="flex justify-center overflow-hidden">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            style={{ height: '300px', transform: 'scale(1.28)' }}
-            src="/mt3000_rendering.mp4"
-          />
+      {/* Live Threats Blocked Counter */}
+      <section className="py-8 bg-gray-900 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <LiveThreatCounter />
         </div>
       </section>
 
+
       {/* Threat Stats Section */}
-      <section className="py-20 bg-gray-50 px-6">
+      <section id="threat-stats" className="py-20 bg-gray-50 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              The Threat Is Real
+              Here's The Proof. This Is Happening.
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Every day, millions of attacks target American homes and businesses from hostile foreign nations.
+              These aren't scare tactics. This is what the FBI, CISA, and security researchers are reporting right now.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-              <div className="text-5xl font-bold text-red-600 mb-2">82%</div>
-              <div className="text-gray-600">of cyberattacks originate from just 7 countries</div>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-red-200">
+              <div className="text-5xl font-bold text-red-600 mb-2">10</div>
+              <div className="text-gray-900 font-medium">attacks per day</div>
+              <div className="text-gray-500 text-sm mt-2">hit the average home network (Bitdefender)</div>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-              <div className="text-5xl font-bold text-blue-600 mb-2">400M+</div>
-              <div className="text-gray-600">malicious IP addresses blocked by ThreatZapper</div>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-red-200">
+              <div className="text-5xl font-bold text-red-600 mb-2">39 sec</div>
+              <div className="text-gray-900 font-medium">between attacks</div>
+              <div className="text-gray-500 text-sm mt-2">A hacker attacks somewhere every 39 seconds (Security Magazine)</div>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-              <div className="text-5xl font-bold text-green-600 mb-2">0</div>
-              <div className="text-gray-600">configuration required - just plug it in</div>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-red-200">
+              <div className="text-5xl font-bold text-red-600 mb-2">150%</div>
+              <div className="text-gray-900 font-medium">increase in Chinese attacks</div>
+              <div className="text-gray-500 text-sm mt-2">China's cyber espionage surged 150% in 2024 (CrowdStrike)</div>
             </div>
+          </div>
+
+          {/* Additional scary stat */}
+          <div className="mt-8 bg-red-900 text-white rounded-2xl p-8 text-center">
+            <p className="text-lg mb-2">In 2024, Chinese hackers compromised <span className="font-bold">9 major US telecom providers</span></p>
+            <p className="text-red-200">Salt Typhoon potentially accessed data from nearly every American. — FBI/CISA Report</p>
           </div>
 
           <div className="mt-12 bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
@@ -367,8 +396,87 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What ThreatZapper Protects You From */}
+      {/* Testimonials */}
       <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Americans Are Taking Back Control
+            </h2>
+            <p className="text-lg text-gray-600">
+              Join thousands of families who sleep better knowing foreign hackers can't reach them.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6">
+                "I checked my router logs before ThreatZapper - dozens of connection attempts from Russia and China every day.
+                Now? Zero. Absolute silence. This thing actually works."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                  <span className="text-blue-600 font-semibold">M</span>
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900">Mike R.</div>
+                  <div className="text-sm text-gray-500">Austin, TX</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6">
+                "Setup took literally 2 minutes. Unplugged one cable, plugged in ThreatZapper, done.
+                My husband was skeptical but even he admits he feels better about our smart home now."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
+                  <span className="text-pink-600 font-semibold">S</span>
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900">Sarah K.</div>
+                  <div className="text-sm text-gray-500">Tampa, FL</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-6">
+                "As a small business owner, I was spending $200/month on security software.
+                ThreatZapper was a one-time $199 and blocks way more than those subscriptions ever did."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                  <span className="text-green-600 font-semibold">D</span>
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900">David M.</div>
+                  <div className="text-sm text-gray-500">San Diego, CA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What ThreatZapper Protects You From */}
+      <section className="py-20 bg-gray-50 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -395,13 +503,14 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="relative">
-              <Image
-                src="/product.png"
-                alt="ThreatZapper Device"
-                width={500}
-                height={500}
-                className="w-full max-w-md mx-auto"
+            <div className="relative flex justify-center">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full max-w-md rounded-2xl shadow-xl"
+                src="/mt3000_rendering.mp4"
               />
             </div>
           </div>
@@ -443,6 +552,109 @@ export default function Home() {
           <p className="text-center text-gray-500 mt-12 text-lg">
             Designed for homes, small businesses, studios, and creators who need<br className="hidden md:block" />
             military-grade security without complexity.
+          </p>
+        </div>
+      </section>
+
+      {/* ThreatZapper+ Tiers */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Your ThreatZapper, Your Way
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Works instantly out of the box. Want more visibility? Upgrade anytime.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Basic - Just Plug In */}
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+              <div className="text-sm font-medium text-gray-500 mb-2">PLUG & PROTECT</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Just Plug It In</h3>
+              <p className="text-gray-600 mb-6">
+                Zero setup. Zero registration. It just works the moment you connect it.
+              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  Blocks 400M+ hostile IPs
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  Automatic updates via WiFi
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  Set and forget protection
+                </li>
+              </ul>
+              <div className="text-sm text-gray-500">Included with every ThreatZapper</div>
+            </div>
+
+            {/* Registered */}
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+              <div className="text-sm font-medium text-gray-500 mb-2">REGISTER</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">See Your Stats</h3>
+              <p className="text-gray-600 mb-6">
+                Quick free registration unlocks your personal dashboard.
+              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  Everything in Plug & Protect
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  See total threats blocked
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  Device health monitoring
+                </li>
+              </ul>
+              <div className="text-sm text-gray-500">Free forever</div>
+            </div>
+
+            {/* ThreatZapper+ */}
+            <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 shadow-lg border-2 border-blue-400 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-900 text-xs font-bold px-3 py-1 rounded-full">
+                30 DAYS FREE
+              </div>
+              <div className="text-sm font-medium text-blue-200 mb-2">THREATZAPPER+</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Full Visibility</h3>
+              <p className="text-blue-100 mb-6">
+                Real-time insights into every threat we're blocking for you.
+              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-white">
+                  <CheckCircle className="h-5 w-5 text-green-300" />
+                  Real-time threat feed
+                </li>
+                <li className="flex items-center gap-2 text-white">
+                  <CheckCircle className="h-5 w-5 text-green-300" />
+                  Live world map of attacks
+                </li>
+                <li className="flex items-center gap-2 text-white">
+                  <CheckCircle className="h-5 w-5 text-green-300" />
+                  Inbound & outbound visibility
+                </li>
+                <li className="flex items-center gap-2 text-white">
+                  <CheckCircle className="h-5 w-5 text-green-300" />
+                  Weekly threat report emails
+                </li>
+                <li className="flex items-center gap-2 text-white">
+                  <CheckCircle className="h-5 w-5 text-green-300" />
+                  See scans you're invisible to
+                </li>
+              </ul>
+              <div className="text-sm text-blue-200">Free 30-day trial, then $9/mo</div>
+            </div>
+          </div>
+
+          <p className="text-center text-gray-500 mt-8">
+            Every ThreatZapper protects you instantly. ThreatZapper+ just lets you see it happening.
           </p>
         </div>
       </section>
@@ -653,22 +865,103 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Price Anchoring - The Math Section */}
+      <section className="py-20 bg-gray-900 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              The Math Is Simple
+            </h2>
+            <p className="text-lg text-gray-400">
+              What happens when foreign hackers get through?
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-red-900/50 border border-red-700 rounded-2xl p-8">
+              <h3 className="text-xl font-semibold text-red-400 mb-6">Cost of Getting Hacked</h3>
+              <div className="space-y-4 text-gray-300">
+                <div className="flex justify-between items-center border-b border-red-800 pb-3">
+                  <span>Ransomware recovery</span>
+                  <span className="font-bold text-red-400">$120,000+</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-red-800 pb-3">
+                  <span>Identity theft resolution</span>
+                  <span className="font-bold text-red-400">200+ hours</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-red-800 pb-3">
+                  <span>Small businesses that close after attack</span>
+                  <span className="font-bold text-red-400">58%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>Average downtime</span>
+                  <span className="font-bold text-red-400">24 days</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-green-900/50 border border-green-700 rounded-2xl p-8">
+              <h3 className="text-xl font-semibold text-green-400 mb-6">Cost of ThreatZapper</h3>
+              <div className="space-y-4 text-gray-300">
+                <div className="flex justify-between items-center border-b border-green-800 pb-3">
+                  <span>One-time purchase</span>
+                  <span className="font-bold text-green-400">$199</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-green-800 pb-3">
+                  <span>Monthly subscription</span>
+                  <span className="font-bold text-green-400">$0</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-green-800 pb-3">
+                  <span>Setup time</span>
+                  <span className="font-bold text-green-400">2 minutes</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>Foreign threats blocked</span>
+                  <span className="font-bold text-green-400">100%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-center text-gray-500 text-lg">
+            $199 once. Or risk $120,000+ and months of recovery. Your call.
+          </p>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-20 bg-blue-600 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Stop Foreign Threats Today
+            Stop The Scans. Block The Threats.
           </h2>
-          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+          <p className="text-xl text-blue-100 mb-6 max-w-2xl mx-auto">
             Join thousands of American families who've taken control of their network security.
-            30-day money-back guarantee.
           </p>
+
+          {/* Pricing */}
+          <div className="mb-8">
+            <span className="text-blue-200 line-through text-xl">$249</span>
+            <span className="text-4xl font-bold text-white ml-3">$199</span>
+            <span className="text-green-300 font-medium ml-3">Limited Time</span>
+          </div>
+
           <Link href="/checkout">
-            <Button size="xl" className="bg-white text-blue-600 hover:bg-gray-100">
-              Order ThreatZapper - $199
+            <Button size="xl" className="bg-white text-blue-600 hover:bg-gray-100 shadow-lg">
+              Order ThreatZapper Now
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
+
+          {/* Guarantee */}
+          <div className="mt-8 inline-flex items-center gap-3 bg-blue-700 rounded-xl px-6 py-4">
+            <Shield className="h-8 w-8 text-green-300" />
+            <div className="text-left">
+              <div className="font-semibold text-white">30-Day Risk-Free Guarantee</div>
+              <div className="text-sm text-blue-200">Don't love it? Full refund, no questions asked.</div>
+            </div>
+          </div>
+
           <p className="text-blue-200 mt-6 text-sm">
             Free shipping. No subscription. Ships within 3-5 business days.
           </p>
@@ -688,7 +981,7 @@ export default function Home() {
               <a href="mailto:support@threatzapper.com" className="hover:text-white transition">Contact</a>
             </div>
             <div className="text-sm text-gray-500">
-              © 2025 ThreatZapper. All rights reserved.
+              © 2026 ThreatZapper. All rights reserved.
             </div>
           </div>
         </div>
